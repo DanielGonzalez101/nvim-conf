@@ -27,6 +27,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 -- General options
+vim.o.equalalways = false
 vim.opt.list = false
 vim.opt.number = true
 vim.opt.relativenumber = true
