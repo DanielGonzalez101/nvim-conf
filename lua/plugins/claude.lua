@@ -5,33 +5,17 @@ return {
 	},
 
 	opts = {
+		terminal_cmd = "/opt/homebrew/bin/claude", -- cambia a "~/.claude/local/claude" si `which claude` apunta ahí
 		terminal = {
 			provider = "native",
 			split_side = "right",
-			split_width = 80,
+			split_width_percentage = 0.35,
+			auto_close = false, -- ← IMPORTANTE: evita que se cierre solo
 		},
 	},
 
 	config = function(_, opts)
 		require("claudecode").setup(opts)
-
-		-- 🔒 Bloquear tamaño de la ventana del chat
-		vim.api.nvim_create_autocmd("FileType", {
-			pattern = "claudecode",
-			callback = function()
-				vim.wo.winfixwidth = true
-				vim.wo.winfixheight = true
-			end,
-		})
-		vim.api.nvim_create_autocmd("WinEnter", {
-			callback = function()
-				local ft = vim.bo.filetype
-				if ft == "claudecode" then
-					vim.cmd("vertical resize 80")
-					vim.wo.winfixwidth = true
-				end
-			end,
-		})
 	end,
 
 	keys = {
