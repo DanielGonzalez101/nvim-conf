@@ -22,29 +22,11 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Leader keys
+-- Leader keys (must be set before lazy loads plugins)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
--- General options
-vim.o.equalalways = false
-vim.opt.list = false
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.expandtab = true
-vim.opt.smartindent = true
-vim.opt.wrap = false
-vim.opt.termguicolors = true
-vim.opt.scrolloff = 8
-vim.opt.updatetime = 250
-vim.opt.timeoutlen = 300
-vim.opt.splitright = true
-vim.opt.splitbelow = true
-vim.opt.clipboard = "unnamedplus"
-
--- Overrides que LazyVim pisa
+-- Overrides que LazyVim pisa después de cargar
 vim.api.nvim_create_autocmd("VimEnter", {
 	callback = function()
 		vim.opt.cursorline = false

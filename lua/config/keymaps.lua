@@ -1,4 +1,5 @@
 -- ~/.config/nvim/lua/config/keymaps.lua
+-- Demo: así se ve el diff en tab nueva con open_in_new_tab = true
 local map = vim.keymap.set
 
 --Better window navigation
@@ -57,6 +58,26 @@ map("n", "<C-q>", ":q<CR>", { desc = "Quit" })
 
 -- Clear search highlight
 map("n", "<leader>h", ":nohlsearch<CR>", { desc = "Clear highlights" })
+
+-- Copy / paste
+-- Pegar en visual sin sobreescribir el clipboard
+map("x", "p", '"_dP', { desc = "Paste without overwriting clipboard" })
+-- Borrar un solo caracter sin afectar el clipboard
+map({ "n", "v" }, "x", '"_x', { desc = "Delete char without yank" })
+-- Eliminar al registro void (no toca el clipboard)
+map({ "n", "v" }, "<leader>D", '"_d', { desc = "Delete to void (no clipboard)" })
+-- Copiar explícitamente al clipboard del sistema
+map({ "n", "v" }, "<leader>y", '"+y', { desc = "Yank to system clipboard" })
+map("n", "<leader>Y", '"+Y', { desc = "Yank line to system clipboard" })
+
+-- Pegar desde el clipboard del sistema (normal y antes del cursor)
+map("n", "<leader>p", '"+p', { desc = "Paste from system clipboard (after)" })
+map("n", "<leader>P", '"+P', { desc = "Paste from system clipboard (before)" })
+
+-- Pegar en insert mode desde el clipboard del sistema sin romper indentación
+-- <C-r><C-o>+ inserta literalmente sin triggear autoindent ni formateo
+map("i", "<C-v>", "<C-r><C-o>+", { desc = "Paste from system clipboard (insert)" })
+map("c", "<C-v>", "<C-r>+", { desc = "Paste from system clipboard (command line)" })
 
 -- Diagnostics
 --map("n", "[d", vim.diagnostic.goto_prev, { desc = "Prev diagnostic" })

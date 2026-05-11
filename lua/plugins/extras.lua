@@ -155,6 +155,8 @@ return {
 				{ "<leader>x", group = "diagnostics/trouble" },
 				{ "<leader>j", group = "java" },
 				{ "<leader>b", group = "buffers" },
+				{ "<leader>y", group = "yank/clipboard" },
+				{ "<leader>D", desc = "Delete to void" },
 			},
 		},
 	},
