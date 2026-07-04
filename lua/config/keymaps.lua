@@ -32,7 +32,9 @@ map("n", "<leader>o", ":Neotree focus<CR>", { desc = "Focus Neo-tree" })
 map("n", "<leader>ge", ":Neotree git_status<CR>", { desc = "Neo-tree Git Status" })
 
 -- Terminal
-map("n", "<leader>t", "<cmd>ToggleTerm direction=horizontal<CR>", { desc = "Toggle terminal" })
+map("n", "<leader>t", "<cmd>ToggleTerm direction=horizontal<CR>", { desc = "Toggle terminal horizontal" })
+map("n", "<C-t>", "<cmd>ToggleTerm direction=float<CR>", { desc = "Toggle floating terminal" })
+map("t", "<C-t>", "<cmd>ToggleTerm direction=float<CR>", { desc = "Toggle floating terminal" })
 map("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 map("t", "<C-h>", "<C-\\><C-n><C-w>h", { desc = "Terminal → left window" })
 map("t", "<C-j>", "<C-\\><C-n><C-w>j", { desc = "Terminal → bottom window" })

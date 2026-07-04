@@ -6,7 +6,7 @@ return {
 		"nvim-lualine/lualine.nvim",
 		opts = {
 			options = {
-				--theme = "moonfl",
+				--theme = "auto",
 				component_separators = { left = "", right = "" },
 				section_separators = { left = "", right = "" },
 				globalstatus = true,
@@ -95,6 +95,18 @@ return {
 				map("n", "<leader>gS", gs.stage_buffer, { buffer = bufnr, desc = "Stage buffer" })
 			end,
 		},
+		config = function(_, opts)
+			require("gitsigns").setup(opts)
+			local function apply_gitsigns_bg()
+				local bg = vim.o.background == "dark" and "#101010" or nil
+				for _, hl in ipairs({ "GitSignsAdd", "GitSignsChange", "GitSignsDelete", "GitSignsTopdelete", "GitSignsChangedelete", "GitSignsUntracked" }) do
+					local existing = vim.api.nvim_get_hl(0, { name = hl, link = false })
+					vim.api.nvim_set_hl(0, hl, { fg = existing.fg, bg = bg })
+				end
+			end
+			apply_gitsigns_bg()
+			vim.api.nvim_create_autocmd("ColorScheme", { callback = apply_gitsigns_bg })
+		end,
 	},
 
 	-- Better notifications
@@ -144,23 +156,6 @@ return {
 		},
 	},
 
-	-- Which-key: shows keybindings as you type
-	{
-		"folke/which-key.nvim",
-		opts = {
-			spec = {
-				{ "<leader>tn", desc = "Toggle terminal" },
-				{ "<leader>f", group = "find/files" },
-				{ "<leader>g", group = "git" },
-				{ "<leader>x", group = "diagnostics/trouble" },
-				{ "<leader>j", group = "java" },
-				{ "<leader>b", group = "buffers" },
-				{ "<leader>y", group = "yank/clipboard" },
-				{ "<leader>D", desc = "Delete to void" },
-			},
-		},
-	},
-
 	-- Treesitter: better syntax highlighting
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -183,6 +178,10 @@ return {
 				"bash",
 				"html",
 				"css",
+				"go",
+				"gomod",
+				"gowork",
+				"gosum",
 			},
 			highlight = { enable = true },
 			indent = { enable = true },

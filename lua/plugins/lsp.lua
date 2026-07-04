@@ -22,6 +22,10 @@ return {
 				"csharpier",
 				"lua-language-server",
 				"stylua",
+				"gopls",
+				"goimports",
+				"gofumpt",
+				"golangci-lint",
 			},
 		},
 	},
@@ -108,6 +112,27 @@ return {
 						},
 					},
 				},
+
+				gopls = {
+					settings = {
+						gopls = {
+							analyses = {
+								unusedparams = true,
+								shadow = true,
+							},
+							staticcheck = true,
+							gofumpt = true,
+							hints = {
+								assignVariableTypes = true,
+								compositeLiteralFields = true,
+								constantValues = true,
+								functionTypeParameters = true,
+								parameterNames = true,
+								rangeVariableTypes = true,
+							},
+						},
+					},
+				},
 			},
 		},
 	},
@@ -127,6 +152,7 @@ return {
 				css = { "prettier" },
 				html = { "prettier" },
 				cs = { "csharpier" },
+				go = { "goimports", "gofumpt" },
 			},
 		},
 	},

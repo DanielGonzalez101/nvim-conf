@@ -13,8 +13,8 @@ return {
 			auto_close = false,
 		},
 		diff_opts = {
-			layout = "vertical",       -- "vertical" = lado a lado | "horizontal" = arriba/abajo
-			open_in_new_tab = true,    -- abre el diff en una tab nueva (pantalla completa)
+			layout = "vertical", -- "vertical" = lado a lado | "horizontal" = arriba/abajo
+			open_in_new_tab = true, -- abre el diff en una tab nueva (pantalla completa)
 			hide_terminal_in_new_tab = true, -- oculta la terminal en esa tab para ver solo el diff
 			keep_terminal_focus = false,
 		},

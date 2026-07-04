@@ -3,13 +3,9 @@ return {
 	version = "*",
 	config = function()
 		require("toggleterm").setup({
-			direction = "horizontal",
+			direction = "float",
 			size = 15,
 			shade_terminals = false,
-			highlights = {
-				Normal = { guibg = "#282828" },
-				NormalFloat = { guibg = "#282828" },
-			},
 		})
 	end,
 }

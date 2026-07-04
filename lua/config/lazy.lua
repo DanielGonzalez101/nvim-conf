@@ -54,6 +54,7 @@ require("lazy").setup({
 			"folke/snacks.nvim",
 			opts = {
 				words = { enabled = false },
+				image = { enabled = true },
 				explorer = {
 					replace_netrw = true,
 				},
@@ -68,14 +69,15 @@ require("lazy").setup({
 				},
 			},
 		},
-		{ "folke/noice.nvim", enabled = false }, -- agrega esto
+		{ "folke/noice.nvim", enabled = false },
+		{ "folke/which-key.nvim", enabled = false },
 		{ import = "plugins" },
 	},
 	defaults = {
 		lazy = false,
 		version = false,
 	},
-	install = { colorscheme = { "gruvbox" } },
+	install = { colorscheme = { "cyberdream", "bark", "material" } },
 	checker = { enabled = true },
 	performance = {
 		rtp = {
