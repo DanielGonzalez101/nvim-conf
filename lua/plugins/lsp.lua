@@ -26,6 +26,10 @@ return {
 				"goimports",
 				"gofumpt",
 				"golangci-lint",
+				-- Java
+				"jdtls",
+				"lemminx",
+				"java-debug-adapter",
 			},
 		},
 	},
@@ -110,6 +114,13 @@ return {
 							completion = { callSnippet = "Replace" },
 							diagnostics = { globals = { "vim" } },
 						},
+					},
+				},
+
+				lemminx = {
+					filetypes = { "xml" },
+					settings = {
+						xml = { server = { workDir = "~/.cache/lemminx" } },
 					},
 				},
 
