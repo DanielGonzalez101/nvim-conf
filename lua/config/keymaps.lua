@@ -85,3 +85,4 @@ map("c", "<C-v>", "<C-r>+", { desc = "Paste from system clipboard (command line)
 --map("n", "[d", vim.diagnostic.goto_prev, { desc = "Prev diagnostic" })
 --map("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
 --map("n", "<leader>d", vim.diagnostic.open_float, { desc = "Line diagnostics" })
+--

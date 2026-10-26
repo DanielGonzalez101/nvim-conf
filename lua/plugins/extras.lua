@@ -1,12 +1,22 @@
 -- ~/.config/nvim/lua/plugins/extras.lua
 -- Quality-of-life plugins on top of LazyVim defaults
 return {
+	-- Desactivar ghost text de blink.cmp
+	{
+		"saghen/blink.cmp",
+		opts = {
+			completion = {
+				ghost_text = { enabled = false },
+			},
+		},
+	},
+
 	-- Better statusline
 	{
 		"nvim-lualine/lualine.nvim",
 		opts = {
 			options = {
-				--theme = "auto",
+				theme = "auto",
 				component_separators = { left = "", right = "" },
 				section_separators = { left = "", right = "" },
 				globalstatus = true,
@@ -97,15 +107,21 @@ return {
 		},
 		config = function(_, opts)
 			require("gitsigns").setup(opts)
-			local function apply_gitsigns_bg()
-				local bg = vim.o.background == "dark" and "#101010" or nil
-				for _, hl in ipairs({ "GitSignsAdd", "GitSignsChange", "GitSignsDelete", "GitSignsTopdelete", "GitSignsChangedelete", "GitSignsUntracked" }) do
+			local function apply_gitsigns_hl()
+				for _, hl in ipairs({
+					"GitSignsAdd",
+					"GitSignsChange",
+					"GitSignsDelete",
+					"GitSignsTopdelete",
+					"GitSignsChangedelete",
+					"GitSignsUntracked",
+				}) do
 					local existing = vim.api.nvim_get_hl(0, { name = hl, link = false })
-					vim.api.nvim_set_hl(0, hl, { fg = existing.fg, bg = bg })
+					vim.api.nvim_set_hl(0, hl, { fg = existing.fg, bg = "NONE", bold = false, italic = false })
 				end
 			end
-			apply_gitsigns_bg()
-			vim.api.nvim_create_autocmd("ColorScheme", { callback = apply_gitsigns_bg })
+			apply_gitsigns_hl()
+			vim.api.nvim_create_autocmd("ColorScheme", { callback = apply_gitsigns_hl })
 		end,
 	},
 

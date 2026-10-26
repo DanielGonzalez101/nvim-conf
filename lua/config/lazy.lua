@@ -48,7 +48,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 require("lazy").setup({
 	spec = {
-		{ "LazyVim/LazyVim", import = "lazyvim.plugins" },
+		{ "LazyVim/LazyVim", import = "lazyvim.plugins", opts = { colorscheme = "bark" } },
 		{ "RRethy/vim-illuminate", enabled = false },
 		{
 			"folke/snacks.nvim",
@@ -77,7 +77,7 @@ require("lazy").setup({
 		lazy = false,
 		version = false,
 	},
-	install = { colorscheme = { "cyberdream", "bark", "material" } },
+	install = { colorscheme = { "kanagawa", "gruvbox", "cyberdream", "bark", "material" } },
 	checker = { enabled = true },
 	performance = {
 		rtp = {

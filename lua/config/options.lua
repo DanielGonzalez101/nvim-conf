@@ -43,7 +43,17 @@ opt.swapfile = false
 opt.backup = false
 opt.undofile = true
 opt.undodir = vim.fn.stdpath("state") .. "/undo"
+-- No guardar buffer list entre sesiones (quitar el %)
+opt.shada = "!,'100,<50,s10,h"
+
+-- Limpiar jumplist al abrir para que Ctrl+O no salte a sesiones anteriores
+vim.api.nvim_create_autocmd("VimEnter", {
+	once = true,
+	callback = function()
+		vim.cmd("clearjumps")
+	end,
+})
 
 -- Misc
-opt.confirm = true       -- prompt before discarding unsaved changes
+opt.confirm = true -- prompt before discarding unsaved changes
 opt.virtualedit = "block" -- allow cursor past EOL in block-visual mode
